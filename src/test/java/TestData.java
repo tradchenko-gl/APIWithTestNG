@@ -16,4 +16,9 @@ public class TestData {
     public Object[][] idCategoryNameExcel() throws IOException {
         return ExcelUtils.getTestData("C:\\Personal\\Education\\IdeaProjects\\APIWithTestNG\\src\\test\\java\\utils\\excelData2.xlsx", "Sheet1");
     }
+
+    @DataProvider(name = "newProduceExcel")
+    public Object[][] newProduceExcel() throws IOException {
+        return ExcelUtils.getTestData("C:\\Personal\\Education\\IdeaProjects\\APIWithTestNG\\src\\test\\java\\utils\\excelData2.xlsx", "Sheet2");
+    }
 }

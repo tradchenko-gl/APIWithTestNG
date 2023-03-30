@@ -1,7 +1,7 @@
 
 import config.FakeAPIConfig;
 import config.FakeAPIEndPoints;
-import org.testng.annotations.DataProvider;
+import objects.FakeAPIProduct;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -85,6 +85,17 @@ public class FakeAPITests extends FakeAPIConfig {
                 .body("category", equalTo(category))
                 .body("title", equalTo(title));
 
+    }
+
+    @Test(dataProvider = "newProduceExcel", dataProviderClass = TestData.class)
+    public void testProductSerializationByJSON(String title, String price, String description, String image, String category) {
+        FakeAPIProduct fakeAPIProduct = new FakeAPIProduct(title, price, description, image, category);
+
+        given()
+                .body(fakeAPIProduct)
+        .when()
+                .post(FakeAPIEndPoints.ALL_PRODUCTS)
+                .then();
     }
 
 }
